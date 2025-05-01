@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Exception Handling</title>
+</head>
+<body>
+  <h1>JavaScript Exception Handling Output</h1>
+  <p>Open your browser console to see the results (Press F12 and go to the Console tab).</p>
+
+  <script>
+    // 1. Undeclared Variable Handling
+    try {
+      console.log(x);
+    } catch (error) {
+      console.log("Error (Undeclared Variable):", error.message);
+    }
+
+    // 2. Divide by Zero Error
+    function divide(a, b) {
+      if (b === 0) {
+        throw new Error("Divide by Zero");
+      }
+      return a / b;
+    }
+
+    try {
+      console.log(divide(10, 0));
+    } catch (error) {
+      console.log("Error (Divide):", error.message);
+    }
+
+    // 3. Out of Bound Error
+    function accessElement(arr, index) {
+      if (index < 0 || index >= arr.length) {
+        throw new Error("Out of Bound Error");
+      }
+      return arr[index];
+    }
+
+    try {
+      let arr = [1, 2, 3];
+      console.log(accessElement(arr, 5));
+    } catch (error) {
+      console.log("Error (Array Access):", error.message);
+    }
+
+    // 4. Finally Block Example
+    try {
+      let result = 10 / 0;
+      if (!isFinite(result)) {
+        throw new Error("Divide by Zero");
+      }
+      console.log(result);
+    } catch (error) {
+      console.log("Error (Finally Block):", error.message);
+    } finally {
+      console.log("Execution completed (Finally Block)");
+    }
+  </script>
+</body>
+</html>
